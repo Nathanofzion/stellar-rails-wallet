@@ -12,10 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180831115240) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "federations", force: :cascade do |t|
+  create_table "federations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "username", null: false
     t.text "address", null: false
     t.datetime "created_at", null: false
@@ -23,12 +20,12 @@ ActiveRecord::Schema.define(version: 20180831115240) do
     t.boolean "synced", default: false
     t.string "email_confirmation_token"
     t.boolean "email_confirmed", default: false
-    t.datetime "email_confirmation_generated_at"
+    t.timestamp "email_confirmation_generated_at"
     t.integer "emails_sent", default: 1
-    t.index ["address"], name: "index_federations_on_address", unique: true
+    t.index ["address"], name: "index_federations_on_address", unique: true, length: { address: 255 }
     t.index ["email_confirmation_token"], name: "index_federations_on_email_confirmation_token", unique: true
-    t.index ["username", "address"], name: "index_federations_on_username_and_address", unique: true
-    t.index ["username"], name: "index_federations_on_username", unique: true
+    t.index ["username", "address"], name: "index_federations_on_username_and_address", unique: true, length: { username: 255, address: 255 }
+    t.index ["username"], name: "index_federations_on_username", unique: true, length: { username: 767 }
   end
 
 end

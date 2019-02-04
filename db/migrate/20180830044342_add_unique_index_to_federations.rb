@@ -25,6 +25,6 @@
 # THE SOFTWARE.
 class AddUniqueIndexToFederations < ActiveRecord::Migration[5.1]
   def change
-    add_index :federations, [:username, :address], unique: true
+    add_index :federations, [:username, :address], unique: true,length:255
   end
 end

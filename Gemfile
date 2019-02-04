@@ -66,7 +66,8 @@ gem 'mina'
 # gem 'font-awesome-sass', '~> 5.0.6'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'rails-controller-testing'
-gem 'pg'
+#gem 'pg'
+gem 'mysql2'
 gem 'whenever', require: false
 gem 'rails-html-sanitizer', '~> 1.0.4'
 gem "figaro"

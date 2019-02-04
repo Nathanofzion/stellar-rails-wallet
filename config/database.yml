@@ -21,10 +21,9 @@
 # gem 'pg'
 #
 default: &default
-  adapter: postgresql
-  encoding: unicode
-  username: postgres
-  password:
+  adapter: mysql2
+  username: root
+  password: 12345678
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 25 } %>
