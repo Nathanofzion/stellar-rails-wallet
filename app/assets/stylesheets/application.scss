@@ -70,8 +70,8 @@ body {
     //margin-bottom: 100px;
     min-height: 100%;
     /*   position: absolute; */
-    background-image: image-url("rocket.png");
-    background-repeat: repeat repeat;
+    //background-image: image-url("rocket.png");
+    //background-repeat: repeat repeat;
 }
 #wrapper {
     display: none;
@@ -124,11 +124,11 @@ fieldset[disabled] .btn-brown.active {
 }
 nav.navbar.navbar-expand-md {
     // background-color: #C1C1C1;
-    background-color: #51504E;
+    background-color: #FFF;
 }
 #navbar {
     a:link, a:hover, a:visited {
-        color: white;
+        color:grey;
 
         @media(min-width: 750px) {
             font-size: 20px;
@@ -162,7 +162,7 @@ nav.navbar.navbar-expand-md {
     }
     
     img {
-        width: 150px;
+        width: 250px;
     }
 }
 .right-col {
@@ -306,36 +306,6 @@ footer {
         color: orange;
     }
     
-    background:
-        radial-gradient(black 15%, transparent 16%) 0 0,
-        radial-gradient(black 15%, transparent 16%) 8px 8px,
-        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
-        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
-    background-color:#282828;
-    background-size:16px 16px;
-    color: white;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 100px;
-    line-height: 30px;
-
-    @media(min-width: 750px) {
-        height: 60px;
-        line-height: 60px;
-    }    
-
-    .social {
-        text-align: center;
-        margin-top: 10px;
-        /* i {
-           padding-left: 10px;
-           } */
-        color: white;
-        a:link, a:visited, a:hover {
-            color: white;
-        }
-    }
 }
 
 #history-nav {
@@ -508,4 +478,19 @@ footer {
 }
 #fed-address-error {
     display: none;
+}
+.top_bg{
+    background-image: image-url("cloud_top.png");
+    background-repeat: repeat repeat;
+    height:100px;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-image: image-url("cloud_bottom.png");
+  color: white;
+  text-align: center;
+  height:150px;
 }
