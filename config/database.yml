@@ -37,5 +37,10 @@ test:
   database: wallet_test
 
 production:
-  <<: *default
-  database: wallet_production
+  adapter: mysql2
+  pool: 5
+  timeout: 5000
+  username: root
+  password: '4Egml5ggbibwsIPC'
+  database: "wallet_production"
+  socket:   "/cloudsql/data-rush-228617:europe-west2:stellar-air-drop"

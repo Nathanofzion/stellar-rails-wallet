@@ -1,0 +1,10 @@
+entrypoint: bundle exec rackup --port $PORT
+env: flex
+runtime: ruby
+
+env_variables:
+  SECRET_KEY_BASE: '5c38e72920cf60c22018f24d5507db1fb7c9fb028a25877ff5f1c7a05ee5ec78b80c22638a08d07369a9fa56bf5e76d703f98495d4fafd7401bd401e5ac24b1a'
+  
+
+beta_settings:
+  cloud_sql_instances: 'data-rush-228617:europe-west2:stellar-air-drop'

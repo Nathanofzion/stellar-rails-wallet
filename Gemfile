@@ -78,3 +78,5 @@ gem 'toml-rb'
 gem 'webpacker', '~> 3.5'
 # rbnacl-libsodium is not supported by rbnacl 6.0+.
 gem 'rbnacl', '5.0.0'
+
+gem "appengine", "~> 0.4.6"
