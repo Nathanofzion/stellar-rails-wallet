@@ -65,7 +65,7 @@ html {
 body {
     margin-bottom: 100px;
     @media(min-width: 750px) {
-        margin-bottom: 60px;
+        margin-bottom: 30px;
     }
     //margin-bottom: 100px;
     min-height: 100%;
@@ -484,13 +484,39 @@ footer {
     background-repeat: repeat repeat;
     height:100px;
 }
+.bottom_bg{
+    background-image: image-url("cloud_bottom.png");
+    background-repeat: repeat repeat;
+    height:100px;
+    margin-top: 3rem;
+}
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-image: image-url("cloud_bottom.png");
-  color: white;
-  text-align: center;
-  height:150px;
+  background:
+        radial-gradient(black 15%, transparent 16%) 0 0,
+        radial-gradient(black 15%, transparent 16%) 8px 8px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+    background-color:#282828;
+    background-size:16px 16px;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    @media(min-width: 750px) {
+        height: 30px;
+        line-height: 30px;
+    }    
+
+    .social {
+        text-align: center;
+        margin-top: 10px;
+        /* i {
+           padding-left: 10px;
+           } */
+        color: white;
+        a:link, a:visited, a:hover {
+            color: white;
+        }
+    }
 }

@@ -41,8 +41,10 @@
       .alert.alert-danger.text-center
         Please enable javascript to use this website.
     / Wrapper
-    #wrapper
+    .container
       .row.top_bg
+    #wrapper
+      
       / Main view
       -# .notice
       -#   = notice
@@ -71,11 +73,13 @@
       = yield
     / End wrapper
     / Footer
+    .container
+      .row.bottom_bg
     %footer.footer
       .container
         .row
-          .footer-copyright.text-center.py-3 &nbsp; 
-          
+          .col.social
+              
 :javascript
   $(document).ready(function(){
     if (Cookies.get('agreement') !== 'true') {
