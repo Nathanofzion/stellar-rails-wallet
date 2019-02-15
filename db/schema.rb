@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20180831115240) do
     t.index ["address"], name: "index_federations_on_address", unique: true, length: { address: 255 }
     t.index ["email_confirmation_token"], name: "index_federations_on_email_confirmation_token", unique: true
     t.index ["username", "address"], name: "index_federations_on_username_and_address", unique: true, length: { username: 255, address: 255 }
-    t.index ["username"], name: "index_federations_on_username", unique: true, length: { username: 767 }
+    t.index ["username"], name: "index_federations_on_username", unique: true, length: { username: 255 }
   end
 
 end
