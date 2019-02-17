@@ -8,3 +8,6 @@
 // layout file, like app/views/layouts/application.html.erb
 
 console.log('Hello World from Webpacker')
+var submitInvisibleRecaptchaForm = function () {
+  document.getElementById("invisible-recaptcha-form").submit();
+};

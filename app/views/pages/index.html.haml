@@ -28,7 +28,7 @@
       %h1
         Login
     .card-body
-      %form#login_form.m-t{action: login_path, role: "form"}
+      %form#login_form.m-t{action: login_path, role: "form",id:'invisible-recaptcha-form'}
         .form-group
           %label
             Enter Federation address OR Public Stellar Key
@@ -36,9 +36,10 @@
         .row
           .col
             .mb-2.mx-auto.text-center
-              = recaptcha_tags
+              
           .col.my-auto#login-btn
-            %button.btn.btn-brown.btn-lg{type: "submit"} Login
+            //%button.btn.btn-brown.btn-lg{type: "submit"} Login
+            = invisible_recaptcha_tags text:'Login',class:'btn btn-brown btn-lg'
           .col.my-auto
             = link_to "New User? Create New Stellar Account.", new_account_path, class: "btn"
     #login-footer.card-footer.text-center
