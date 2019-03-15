@@ -29,24 +29,27 @@
   .address
     = session[:address]
 .inactive-prompt.alert.alert-info.text-center
-  Send Minimum
-  %b
-    1 XLM
-  to this address,
+  //Send Minimum
+  / %b
+  /   1 XLM
+  / to this address,
+  / %br
+  / from another active
+  / %b
+  /   Stellar Account
+  / %br
+  / OR
+  / %br
+  / from
+  / %b
+  /   Exchange
+  / to Activate it.
+  StellarAirdrop is powered by Zi, Zioncoins.
   %br
-  from another active
-  %b
-    Stellar Account
-  %br
-  OR
-  %br
-  from
-  %b
-    Exchange
-  to Activate it.
+  You need Zioncoins to use this wallet click Trust below to add Zi trustline or logout 
   %br
   %br
-  = link_to "Go To Wallet", portfolio_path, class: "btn btn-brown"
+  = link_to "Trust", 'http://stellarairdrop.io/trust_asset?asset_code=Zi&asset_issuer=GDBNNE67F54PTUZTCTOQYT5CQZFXA2AX6O5DCA5BVR653OP6KCWGG2Z7', class: "btn btn-brown"
   = link_to "Log Out", logout_path, class: "btn btn-warning"
   -# %br
   -# Contact support [at] cryptomover dot com for help.
