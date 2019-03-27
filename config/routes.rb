@@ -50,6 +50,7 @@ Rails.application.routes.draw do
   get 'resend_confirmation_email', to: 'federations#resend_confirmation_email'
   get 'get_federation_address', to: 'wallets#get_federation_address'
   get 'send_money', to: 'wallets#transfer_assets'
+  get 'airdrop', to: 'wallets#airdrop_transfer'
   get 'sign_transaction', to: 'wallets#sign_transaction'
   get 'advanced_settings', to: 'wallets#advanced_settings'
 

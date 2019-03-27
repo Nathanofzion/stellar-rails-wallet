@@ -449,6 +449,20 @@ class WalletsController < ApplicationController
     }
   end
 
+  def airdrop_transfer
+    @federation = session[:federation_address]
+    @balances = session[:balances]
+    @address = session[:address]
+    
+    @max_allowed_amount = calculate_max_allowed_amount(NATIVE_ASSET)
+
+    @assets = @balances.map {
+      |balance|
+      balance['asset_type'] == NATIVE_ASSET ?
+        'Lumens' : "#{balance['asset_code']}, #{balance['asset_issuer']}"
+    }
+  end
+
   def success
     get_balances
   end

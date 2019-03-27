@@ -35,11 +35,13 @@
         %li.nav-item
           = link_to "Send", send_money_path, class: "nav-link"
         %li.nav-item
-          = link_to "|  Histories", transactions_path, class: "nav-link"
+          = link_to "| Airdop",airdrop_path, class: "nav-link"
         %li.nav-item
-          = link_to "|  Assets", trust_asset_path, class: "nav-link"
+          = link_to "| Histories", transactions_path, class: "nav-link"
         %li.nav-item
-          = link_to "|  Sign Transaction", sign_transaction_path, class: "nav-link"
+          = link_to "| Assets", trust_asset_path, class: "nav-link"
+        %li.nav-item
+          = link_to "| Sign Transaction", sign_transaction_path, class: "nav-link"
         %li.nav-item
           = link_to "| Advanced Settings", advanced_settings_path, class: "nav-link"
     %ul.navbar-nav.ml-auto
