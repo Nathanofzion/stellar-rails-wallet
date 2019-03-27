@@ -43,6 +43,21 @@
           .col.my-auto
             = link_to "New User? Create New Stellar Account.", new_account_path, class: "btn"
     #login-footer.card-footer.text-center
-      = link_to "https://stellarport.io/exchange/alphanum4/Zi/GDBNNE67F54PTUZTCTOQYT5CQZFXA2AX6O5DCA5BVR653OP6KCWGG2Z7/native/XLM/Stellar", target: "_blank" do
-        =image_tag 'logo3.png'
-        Buy Zioncoins here
+      .row
+        .col-md-4
+          =image_tag 'logo3.png'
+          %br
+          = link_to "https://stellarport.io/exchange/alphanum4/Zi/GDBNNE67F54PTUZTCTOQYT5CQZFXA2AX6O5DCA5BVR653OP6KCWGG2Z7/native/XLM/Stellar", target: "_blank" do
+            Buy Zi Zioncoins here
+        .col-md-4
+          =image_tag 'binance.png',height:47
+          %br
+          = link_to "https://www.binance.com/en?ref=11777057", target: "_blank" do
+            Buy XLM here
+            
+        .col-md-4
+          =image_tag 'coinbase.png'
+          %br
+          = link_to "https://www.coinbase.com", target: "_blank" do
+            Buy XLM here        
+
