@@ -27,7 +27,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import {progressBar, scrollToDiv, processTransfer} from './helper';
 
-class SendAssets extends React.Component {
+class SendAirdrop extends React.Component {
     constructor (props) {
     super(props);
         this.state = {
@@ -113,9 +113,7 @@ class SendAssets extends React.Component {
         const amount = parseFloat(value.split(":")[1]);
         $("#amount-to-send").val(amount.replace(/\s/g,''));
     }
-    enableMemoInput() {
-        $("#memo").prop("disabled", false);
-    }
+    
     validateKeyInput(e, type) {
         const name = e.target.name;
         const value = e.target.value;
@@ -199,7 +197,8 @@ class SendAssets extends React.Component {
             const fundAccount = this.state.fundAccount;
             const targetKey = this.state.targetKey;
             const sourcePublicKey = this.state.adderss;
-
+            const memo = this.state.memo;
+            const amount = this.state.amount
             if (!this.state.agreeTerms) {
                 $("#layout-alert").show();
                 $("#layout-alert").html("Please read and Accept Terms and Conditions.");
@@ -210,13 +209,20 @@ class SendAssets extends React.Component {
             }
             this.setState({disabled: true});
             progressBar();
-
-            if (this.state.targetKey.includes('*') == true) {
-                var address = $('#resolve-fed-address').text().split(':')[1];
-                var targetFedAddress = address.replace(/\s/g,'');
-                processTransfer(fundAccount, targetKey, targetFedAddress, createTrx, this);
-            } else {
-                processTransfer(fundAccount, targetKey, null, createTrx, this);
+            if(this.state.targetKey!=''){
+              let address_array = this.state.targetKey.trim().split('\n')
+              if(address_array.length>0){
+                for(var i=0;i<address_array.length;i++){
+                  let address_item = address_array[i];
+                  if (address_item.includes('*') == true) {
+                    var address = $('#resolve-fed-address').text().split(':')[1];
+                    var targetFedAddress = address.replace(/\s/g,'');
+                    processTransfer(fundAccount, address_item, targetFedAddress, createTrx, this);
+                  } else {
+                    processTransfer(fundAccount, address_item, null, createTrx, this);
+                  }
+                }
+              }
             }
         }
     }
@@ -273,6 +279,7 @@ class SendAssets extends React.Component {
                 <input onChange={(event) => this.validateInput(event, 'memo')} className="form-control" id="memo" placeholder="Type Memo" type="text"/>
                 <span style={{color: "red"}}>{this.state.errors["memo"]}</span>
               </div>
+              
               <hr></hr>
               <div className="form-check">
                 <label className="form-check-label">
@@ -284,6 +291,10 @@ class SendAssets extends React.Component {
               <div id="progressbar" className="mt-2 mb-1"></div>
               <div className="fee-prompt mb-2 mt-2 text-danger">
                 Stellar Network charges a transaction fee of 0.00001 XLM for each transaction
+              </div>
+              <div className='row'>
+                <div className='col s12' id='progressReport'>
+                </div>
               </div>
               <div className="container-fluid">
                 <div className="row">
@@ -308,6 +319,6 @@ const assets = JSON.parse(node.getAttribute('data-assets'));
 const address = JSON.parse(node.getAttribute('data-address'));
 
 ReactDOM.render(
-    <SendAssets assets={assets} address={address}/>,
+    <SendAirdrop assets={assets} address={address}/>,
    document.getElementById('transfer-assets-form'),
 );
