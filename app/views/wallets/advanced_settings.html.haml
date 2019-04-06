@@ -22,70 +22,73 @@
 -# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 -# THE SOFTWARE.
 -#
-.card#advanced-settings-card{"data-address": @address, "data-signers": @signers.to_json}
-  .card-header
-    %h1 Advanced Settings
-  .card-body
-    .alert.alert-warning.mb-1.d-block
-      %b
-        Multisignature feature is still under development. Use at your own risk.
-    Your Account
-    - if @federation.present?
+-if @valid
+  .card#advanced-settings-card{"data-address": @address, "data-signers": @signers.to_json}
+    .card-header
+      %h1 Advanced Settings
+    .card-body
+      .alert.alert-warning.mb-1.d-block
+        %b
+          Multisignature feature is still under development. Use at your own risk.
+      Your Account
+      - if @federation.present?
+        %br
+        #federation.address
+          = @federation
       %br
-      #federation.address
-        = @federation
-    %br
-    .address
-      = session[:address]
-    %br
-    #accordionOne.mt-2
-      .card
-        #headingOne.card-header
-          .row
-            .col-11
-              %h5.text-danger Change Threshold
-            .col-1.ml-auto
-              %button#buttonOne.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-target" => "#collapseOne", "data-toggle" => "collapse"}
-                %i.fas.fa-chevron-circle-down
-        #collapseOne.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
-          .card-body
-            #change_threshold_form
-            #thresholds_data{data: @thresholds.to_json, "data-master": @master_weight.to_json}
-            = javascript_pack_tag 'change_threshold_form'
-            #ct-transaction
-            -# = render partial: 'shared/change_threshold_form'
-    #accordionTwo.mt-3
-      .card
-        #headingTwo.card-header
-          .row
-            .col-11
-              %h5.text-danger Add/Remove Signer
-            .col-1.ml-auto
-              %button#buttonTwo.btn.btn-link{"aria-controls" => "collapseTwo", "aria-expanded" => "true", "data-target" => "#collapseTwo", "data-toggle" => "collapse"}
-                %i.fas.fa-chevron-circle-down
-        #collapseTwo.collapse{"aria-labelledby" => "headingTwo", "data-parent" => "#accordion"}
-          .card-body
-            #add_remove_signer_form
-            = javascript_pack_tag 'add_remove_signer_form'
-            #signer-transaction
-            -# = render partial: 'shared/add_remove_signer_form'
-    #progressbar.mt-2
-      .progress-label
-        Processing. Please Wait...
+      .address
+        = session[:address]
+      %br
+      #accordionOne.mt-2
+        .card
+          #headingOne.card-header
+            .row
+              .col-11
+                %h5.text-danger Change Threshold
+              .col-1.ml-auto
+                %button#buttonOne.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-target" => "#collapseOne", "data-toggle" => "collapse"}
+                  %i.fas.fa-chevron-circle-down
+          #collapseOne.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
+            .card-body
+              #change_threshold_form
+              #thresholds_data{data: @thresholds.to_json, "data-master": @master_weight.to_json}
+              = javascript_pack_tag 'change_threshold_form'
+              #ct-transaction
+              -# = render partial: 'shared/change_threshold_form'
+      #accordionTwo.mt-3
+        .card
+          #headingTwo.card-header
+            .row
+              .col-11
+                %h5.text-danger Add/Remove Signer
+              .col-1.ml-auto
+                %button#buttonTwo.btn.btn-link{"aria-controls" => "collapseTwo", "aria-expanded" => "true", "data-target" => "#collapseTwo", "data-toggle" => "collapse"}
+                  %i.fas.fa-chevron-circle-down
+          #collapseTwo.collapse{"aria-labelledby" => "headingTwo", "data-parent" => "#accordion"}
+            .card-body
+              #add_remove_signer_form
+              = javascript_pack_tag 'add_remove_signer_form'
+              #signer-transaction
+              -# = render partial: 'shared/add_remove_signer_form'
+      #progressbar.mt-2
+        .progress-label
+          Processing. Please Wait...
 
-%script{src: "https://cdnjs.cloudflare.com/ajax/libs/stellar-sdk/0.8.0/stellar-sdk.min.js"}
-:javascript
-  $('#buttonOne').click(function() {
-    if ($(this).find($("i")).hasClass('fa-chevron-circle-down')) {
-      $(this).find($("i")).removeClass('fa-chevron-circle-down').addClass('fa-times-circle')
-    } else {
-      $(this).find($("i")).removeClass('fa-times-circle').addClass('fa-chevron-circle-down')
-    }
-  })
-  $('#buttonTwo').click(function() {
-    if ($(this).find($("i")).hasClass('fa-chevron-circle-down')) {
-      $(this).find($("i")).removeClass('fa-chevron-circle-down').addClass('fa-times-circle')
-    } else {
-      $(this).find($("i")).removeClass('fa-times-circle').addClass('fa-chevron-circle-down')
-    }
-  })
+  %script{src: "https://cdnjs.cloudflare.com/ajax/libs/stellar-sdk/0.8.0/stellar-sdk.min.js"}
+  :javascript
+    $('#buttonOne').click(function() {
+      if ($(this).find($("i")).hasClass('fa-chevron-circle-down')) {
+        $(this).find($("i")).removeClass('fa-chevron-circle-down').addClass('fa-times-circle')
+      } else {
+        $(this).find($("i")).removeClass('fa-times-circle').addClass('fa-chevron-circle-down')
+      }
+    })
+    $('#buttonTwo').click(function() {
+      if ($(this).find($("i")).hasClass('fa-chevron-circle-down')) {
+        $(this).find($("i")).removeClass('fa-chevron-circle-down').addClass('fa-times-circle')
+      } else {
+        $(this).find($("i")).removeClass('fa-times-circle').addClass('fa-chevron-circle-down')
+      }
+    })
+-else
+  =render('low_balance')    

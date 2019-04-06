@@ -369,6 +369,7 @@ class WalletsController < ApplicationController
 
   def transactions
     @address = session[:address]
+    @valid = check_zi_coins
   end
 
   # def get_assets
@@ -512,9 +513,11 @@ class WalletsController < ApplicationController
 
   def sign_transaction
     @address = session[:address]
+    @valid = check_zi_coins
   end
 
   def advanced_settings
+    @valid = check_zi_coins
     @address = session[:address]
     @federation = session[:federation_address]
     low = session[:thresholds]['low_threshold']

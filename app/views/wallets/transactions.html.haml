@@ -22,23 +22,26 @@
 -# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 -# THE SOFTWARE.
 -#
-#transactions-card{"data-address": @address.to_json}
-  .card
-    .card-header
-      .row
-        .col-md-3.text-left
-          %h1 Transactions
-        .col-md-9.right-col.mt-3
-          .address
-            = @address
-    .card-body
-      #progressbar
-        .progress-label
-          Please wait...
-      #history-nav
-      = javascript_pack_tag 'transactions_history'
+-if @valid
+  #transactions-card{"data-address": @address.to_json}
+    .card
+      .card-header
+        .row
+          .col-md-3.text-left
+            %h1 Transactions
+          .col-md-9.right-col.mt-3
+            .address
+              = @address
+      .card-body
+        #progressbar
+          .progress-label
+            Please wait...
+        #history-nav
+        = javascript_pack_tag 'transactions_history'
 
-:javascript
-  $("#transactions-tbl").on("click", ".short-address", function() {
-    $(this).css("maxWidth", "100%")
-  })
+  :javascript
+    $("#transactions-tbl").on("click", ".short-address", function() {
+      $(this).css("maxWidth", "100%")
+    })
+-else
+  =render ('low_balance')
