@@ -1,0 +1,16 @@
+.alert.alert-danger.text-center.mb-0
+    %big
+    INACTIVE ACCOUNT.
+    %br
+    .address
+        = session[:address]
+.inactive-prompt.alert.alert-info.text-center
+    Stellar Airdorp is powered by Zi, Zioncoins.You need zioncoins to use this wallet.
+    %br
+    Click Trust below to add zi trustline or logout.
+    %br
+    See Help above on How to use this Wallet.
+    %br
+    %br
+    =link_to 'Trust', trust_asset_path(asset_code:'Zi',asset_issuer:'GDBNNE67F54PTUZTCTOQYT5CQZFXA2AX6O5DCA5BVR653OP6KCWGG2Z7') , class: "btn btn-brown"
+    =link_to "Log Out", logout_path, class: "btn btn-warning"
