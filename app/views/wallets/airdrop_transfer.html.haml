@@ -22,29 +22,32 @@
 -# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 -# THE SOFTWARE.
 -#
-.card#transfer-assets-card{"data-assets": @assets.to_json, "data-address": @address.to_json}
-  .card-header
-    %h1 Airdrop Lumens/Assets
-  .card-body
-    From Account
-    - if @federation.present?
+-if @valid
+  .card#transfer-assets-card{"data-assets": @assets.to_json, "data-address": @address.to_json}
+    .card-header
+      %h1 Airdrop Lumens/Assets
+    .card-body
+      From Account
+      - if @federation.present?
+        %br
+        #federation.address
+          = @federation
       %br
-      #federation.address
-        = @federation
-    %br
-    .address
-      = @address
-    %br
-    .alert.alert-warning.mt-1
-      %b
-        WARNING!
+      .address
+        = @address
       %br
-      Make sure you are transferring the Stellar Assets to correct Stellar Account.
-      %br
-      We are in no way responsible for any loss occurred due to any unexpected server software behaviour or wrong account address.
-    %hr
-    #transfer-assets-form
-    = javascript_pack_tag 'send_airdrop'
-    #ct-send-assets
+      .alert.alert-warning.mt-1
+        %b
+          WARNING!
+        %br
+        Make sure you are transferring the Stellar Assets to correct Stellar Account.
+        %br
+        We are in no way responsible for any loss occurred due to any unexpected server software behaviour or wrong account address.
+      %hr
+      #transfer-assets-form
+      = javascript_pack_tag 'send_airdrop'
+      #ct-send-assets
 
-%script{src: "https://cdnjs.cloudflare.com/ajax/libs/stellar-sdk/0.8.0/stellar-sdk.min.js"}
+  %script{src: "https://cdnjs.cloudflare.com/ajax/libs/stellar-sdk/0.8.0/stellar-sdk.min.js"}
+-else
+  =render('low_balance')

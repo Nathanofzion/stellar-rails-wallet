@@ -434,12 +434,12 @@ class WalletsController < ApplicationController
       'Not Enough Balance'
     end
   end
-
+  
   def transfer_assets
     @federation = session[:federation_address]
     @balances = session[:balances]
     @address = session[:address]
-    
+    @valid = check_zi_coins
     @max_allowed_amount = calculate_max_allowed_amount(NATIVE_ASSET)
 
     @assets = @balances.map {
@@ -450,6 +450,7 @@ class WalletsController < ApplicationController
   end
 
   def airdrop_transfer
+    @valid = check_zi_coins
     @federation = session[:federation_address]
     @balances = session[:balances]
     @address = session[:address]
@@ -462,6 +463,20 @@ class WalletsController < ApplicationController
         'Lumens' : "#{balance['asset_code']}, #{balance['asset_issuer']}"
     }
   end
+
+  def airdrop_multi_transfer
+    @federation = session[:federation_address]
+    @balances = session[:balances]
+    @address = session[:address]
+    @valid = check_zi_coins
+    @max_allowed_amount = calculate_max_allowed_amount(NATIVE_ASSET)
+
+    @assets = @balances.map {
+      |balance|
+      balance['asset_type'] == NATIVE_ASSET ?
+        'Lumens' : "#{balance['asset_code']}, #{balance['asset_issuer']}"
+    }
+  end  
 
   def success
     get_balances
@@ -529,5 +544,17 @@ class WalletsController < ApplicationController
       redirect_to inactive_account_path
       return
     end
+  end
+  def check_zi_coins
+    valid = false
+    balances = session[:balances]
+    if balances.present?
+      balances.each do|asset|
+        if(asset['asset_code']=='Zi' && asset['balance'].to_i>1000)
+          valid = true
+        end
+      end 
+    end
+    return valid 
   end
 end

@@ -29,7 +29,9 @@
         %h1 SUCCESS!
     .card-body.text-center
       %big
-        = params[:message]
+        -params[:message]=params[:message].gsub!('removed','added')
+        -params[:message]=params[:message].gsub!('from','to')
+        =params[:message]
       %hr
       Check Transaction History
       %br
