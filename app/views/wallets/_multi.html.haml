@@ -3,7 +3,7 @@
   .row
     .col.s12
       %h1 Airdrop MultiSend
-      %p A tool to send XLM to multiple recipients in a single transaction from an Interstellar multisig account.
+      %p A tool to send XLM  & other tokens to multiple recipients in a single transaction from an M of N pattern multisig account (3 signers required).
   .row
     %form#form.col.s12{:action => "javascript:none();", :method => "POST"}
       .row
@@ -11,7 +11,7 @@
           %br  
           %p
             %input#mainnet{:name => "network", :type => "radio", :value => "mainnet",:checked=>'true'}/
-            %label{:for => "mainnet"} MainNet & other tokens
+            %label{:for => "mainnet"} MainNet
       .row
         .form-group.col.s12
           .input-field
